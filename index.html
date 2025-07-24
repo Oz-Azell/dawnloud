@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK Download Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .download-btn:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold">APK Download Center</h1>
+                <div class="flex space-x-4">
+                    <button class="px-4 py-2 rounded-md bg-white text-blue-600 font-medium">Login</button>
+                    <button class="px-4 py-2 rounded-md border-2 border-white font-medium">Register</button>
+                </div>
+            </div>
+            <p class="mt-2 opacity-90">Safe and verified APK downloads for your favorite apps</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Search and Filter -->
+        <div class="mb-8 bg-white p-6 rounded-lg shadow-md">
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="text" placeholder="Search apps..." class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option>All Categories</option>
+                    <option>Social</option>
+                    <option>Games</option>
+                    <option>Utilities</option>
+                    <option>Productivity</option>
+                </select>
+                <button class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Search</button>
+            </div>
+        </div>
+
+        <!-- Featured Apps -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Featured Apps</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- App Card 1 -->
+                <div class="app-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="p-2 bg-gray-100">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fced5c96-f444-47ef-a4d4-92f5410c3eb1.png" alt="App icon for a social media platform with blue gradient background and white letter S logo" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">SocialConnect</h3>
+                        <p class="text-gray-600 text-sm mb-4">Version 3.2.1 • 32.5 MB</p>
+                        <p class="text-gray-700 mb-4">Connect with friends and share your moments with the world.</p>
+                        <button class="download-btn w-full py-2 bg-green-500 text-white rounded-md transition" data-apk="socialconnect.apk">Download APK</button>
+                    </div>
+                </div>
+
+                <!-- App Card 2 -->
+                <div class="app-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="p-2 bg-gray-100">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e1148d08-f77c-4d5d-b3a2-53a330f93e77.png" alt="App icon for a photo editor with purple background and camera silhouette in white" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">PhotoPerfect</h3>
+                        <p class="text-gray-600 text-sm mb-4">Version 2.8.4 • 19.2 MB</p>
+                        <p class="text-gray-700 mb-4">Professional photo editing tools for your mobile device.</p>
+                        <button class="download-btn w-full py-2 bg-green-500 text-white rounded-md transition" data-apk="photoperfect.apk">Download APK</button>
+                    </div>
+                </div>
+
+                <!-- App Card 3 -->
+                <div class="app-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="p-2 bg-gray-100">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3b9a43fe-4b38-4673-b5b7-19fadeedd7bf.png" alt="App icon for a fitness tracker with green background and white running shoe icon" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">FitTracker</h3>
+                        <p class="text-gray-600 text-sm mb-4">Version 1.5.3 • 25.7 MB</p>
+                        <p class="text-gray-700 mb-4">Track your workouts, steps and health metrics all in one place.</p>
+                        <button class="download-btn w-full py-2 bg-green-500 text-white rounded-md transition" data-apk="fittracker.apk">Download APK</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Apps -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">All Available Apps</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- App will be dynamically loaded here -->
+                <div id="app-list" class="col-span-full">
+                    <!-- Apps will be loaded by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8 text-gray-800">Frequently Asked Questions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">Is it safe to download APKs from this site?</h3>
+                    <p class="text-gray-700">All our APK files are scanned for viruses and malware before being made available for download.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">How do I install APK files?</h3>
+                    <p class="text-gray-700">Go to Settings > Security and enable "Unknown Sources" then open the downloaded APK file to install.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">Are these APKs modified?</h3>
+                    <p class="text-gray-700">No, we provide original, unmodified APK files from official sources whenever possible.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">Can I request an APK?</h3>
+                    <p class="text-gray-700">Yes, contact us with your request and we'll try to add it to our collection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">APK Download Center</h3>
+                    <p class="text-gray-400">Providing safe and verified APK downloads since 2023</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-3">Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Apps</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Categories</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-3">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Terms</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">DMCA</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-3">Contact</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Email</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Twitter</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Facebook</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>© 2023 APK Download Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample app data
+        const apps = [
+            {
+                name: "MusicStream Pro",
+                version: "4.1.2",
+                size: "18.3 MB",
+                description: "Unlimited music streaming with high quality audio",
+                icon: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/487f9ff7-d836-4f32-a9a3-57cc801b951d.png",
+                alt: "Music player app icon with orange background and white musical note",
+                apk: "musicstream.apk"
+            },
+            {
+                name: "FileManager X",
+                version: "2.5.0",
+                size: "12.7 MB",
+                description: "Advanced file management for your Android device",
+                icon: "https://placehold.co/200x200",
+                alt: "File manager app icon with blue background and white folder",
+                apk: "filemanager.apk"
+            },
+            {
+                name: "WeatherNow",
+                version: "3.7.1",
+                size: "15.9 MB",
+                description: "Accurate weather forecasts and real-time alerts",
+                icon: "https://placehold.co/200x200",
+                alt: "Weather app icon with gradient blue sky background and white sun",
+                apk: "weathernow.apk"
+            },
+            {
+                name: "Todo Master",
+                version: "1.8.3",
+                size: "9.2 MB",
+                description: "Organize your tasks and boost your productivity",
+                icon: "https://placehold.co/200x200",
+                alt: "Todo list app icon with purple background and white checklist",
+                apk: "todomaster.apk"
+            },
+            {
+                name: "VideoPlayerHD",
+                version: "5.2.6",
+                size: "22.4 MB",
+                description: "HD video player with all format support",
+                icon: "https://placehold.co/200x200",
+                alt: "Video player app icon with dark background and white play button",
+                apk: "videoplayer.apk"
+            },
+            {
+                name: "ChatSecure",
+                version: "2.9.5",
+                size: "31.8 MB",
+                description: "Encrypted messaging for private conversations",
+                icon: "https://placehold.co/200x200",
+                alt: "Secure chat app icon with green shield background and white lock",
+                apk: "chatsecure.apk"
+            }
+        ];
+
+        // Load apps dynamically
+        function loadApps() {
+            const appList = document.getElementById('app-list');
+            let html = '';
+            
+            apps.forEach(app => {
+                html += `
+                <div class="app-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 mb-4">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="p-4 bg-gray-100 flex items-center justify-center">
+                            <img src="${app.icon}" alt="${app.alt}" class="w-16 h-16 object-contain">
+                        </div>
+                        <div class="p-4 flex-1">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                <h3 class="text-lg font-semibold text-gray-800">${app.name}</h3>
+                                <span class="text-gray-600 text-sm">v${app.version} • ${app.size}</span>
+                            </div>
+                            <p class="text-gray-700 mb-3">${app.description}</p>
+                            <button class="download-btn px-4 py-1 bg-green-500 text-white rounded-md text-sm transition" data-apk="${app.apk}">Download</button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+            
+            appList.innerHTML = html;
+            addDownloadListeners();
+        }
+
+        // Add download event listeners
+        function addDownloadListeners() {
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const apkFile = this.getAttribute('data-apk');
+                    downloadAPK(apkFile);
+                });
+            });
+        }
+
+        // Download APK function
+        function downloadAPK(filename) {
+            // In a real implementation, this would trigger the actual file download
+            // This is just a simulation for the UI
+            alert(`Downloading ${filename}... (This is a demo - no actual file will be downloaded)`);
+            
+            // Simulate download completion
+            setTimeout(() => {
+                alert(`${filename} download complete!`);
+            }, 1500);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadApps();
+        });
+    </script>
+</body>
+</html>
+
